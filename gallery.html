@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Gallery | Fil Shutter</title>
+    <link rel="icon" type="image/png" href="Assets/FASDC logo.png">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+            .gallery-hero {
+        background: linear-gradient(rgb(46, 139, 87, 1), rgb(30, 107, 71, 0.9)), url('../Assets/header-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 80px 20px 60px;
+        margin-top: 70px;
+    }
+    
+    .gallery-hero h1 {
+        color: white;
+        font-size: 2.8rem;
+        margin-bottom: 15px;
+    }
+    
+    .gallery-hero p {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+    }
+    
+    .gallery-title {
+        text-align: center;
+        color: #2e8b57;
+        font-size: 2rem;
+        margin-bottom: 40px;
+        position: relative;
+    }
+    
+    .gallery-title::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background-color: #2e8b57;
+    }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="index.html" class="logo">
+                    <img src="Assets/logo.png" alt="logo" style="height: 50px; width: auto; margin-right: 10px;">
+                    <div class="logo-text">
+                        <span class="logo-main">FILIPINAS ASIA</span>
+                        <span class="logo-sub">Shutter Door Corporation</span>
+                    </div>
+                </a>
+                <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html#quote" class="nav-cta btn">Get Quote</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Gallery Hero -->
+        <section class="gallery-hero">
+            <div class="container">
+                <h1>Project Gallery</h1>
+                <p>See our shutter door installations across the Philippines. Explore our completed projects showcasing quality, durability, and craftsmanship.</p>
+            </div>
+        </section>
+
+        <!-- Completed Projects Section -->
+        <section class="gallery-section project-highlights">
+            <div class="container">
+                <h2 class="gallery-title">Completed Projects</h2>          
+                    <div class="gallery-grid">
+<!-- Project 1 -->
+<div class="project-card">
+    <div class="project-image">
+        <div class="image-track" id="carousel1">    
+            <img src="Assets/gallery/panglao.png" alt="Panglao Oasis Living Room">
+            <img src="Assets/gallery/panglao1.png" alt="Panglao Oasis Entrance">
+            <img src="Assets/gallery/panglao2.png" alt="Panglao Oasis View">
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="1" data-slide="0"></div>
+            <div class="carousel-dot" data-carousel="1" data-slide="1"></div>
+            <div class="carousel-dot" data-carousel="1" data-slide="2"></div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>PANGLAO OASIS RESORT & SPA</h3>
+        <p>A luxury beachfront resort featuring custom roll-up shutter doors and weather-resistant metal louver windows designed to withstand coastal conditions while providing optimal ventilation and panoramic ocean views for guest suites and common areas.</p>
+        <div class="project-details">
+            <div class="detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Location:</strong> Panglao, Bohol</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-tools"></i>
+                <p><strong>Services:</strong> Custom Roll-up Shutter Doors, Metal Louver Windows, Stainless Steel Railings</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-calendar-alt"></i>
+                <p><strong>Completed:</strong> March 2023</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project 2 -->
+<div class="project-card">
+    <div class="project-image">
+        <div class="image-track" id="carousel2">
+            <img src="Assets/gallery/pedrogil .png" alt="Pedrogil Building 1">
+            <img src="Assets/gallery/pedrogil1.png" alt="Pedrogil Building 2">
+            <img src="Assets/gallery/pedrogil2.png" alt="Pedrogil Building 3">
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="2" data-slide="0"></div>
+            <div class="carousel-dot" data-carousel="2" data-slide="1"></div>
+            <div class="carousel-dot" data-carousel="2" data-slide="2"></div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>PEDRO GIL RESIDENCE</h3>
+        <p>A modern mixed-use development featuring custom roll-up shutter doors and metal louver windows. Our solutions provide optimal security, ventilation, and weather protection while maintaining sleek architectural aesthetics for residential and commercial spaces.</p>
+        <div class="project-details">
+            <div class="detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Location:</strong> Pedro Gil, Manila</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-tools"></i>
+                <p><strong>Services:</strong> Metal Doors, Louver Windows, Security Grilles</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-calendar-alt"></i>
+                <p><strong>Completed:</strong> June 2023</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project 3 -->
+<div class="project-card">
+    <div class="project-image">
+        <div class="image-track" id="carousel3">
+            <img src="Assets/gallery/uptown.png" alt="Uptown 1">
+            <img src="Assets/gallery/uptown1.png" alt="Uptown 2">
+            <img src="Assets/gallery/uptown2.png" alt="Uptown 3">
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="3" data-slide="0"></div>
+            <div class="carousel-dot" data-carousel="3" data-slide="1"></div>
+            <div class="carousel-dot" data-carousel="3" data-slide="2"></div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>ONE UPTOWN ARTS RESIDENCE</h3>
+        <p>Premium condominium development featuring high-end roll-up shutter doors and custom aluminum windows. Our installations provide residents with enhanced security, energy efficiency, and noise reduction while complementing the building's contemporary architectural design.</p>
+        <div class="project-details">
+            <div class="detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Location:</strong> BGC, Taguig City</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-tools"></i>
+                <p><strong>Services:</strong> Roll-up Shutter Doors, Aluminum Windows, Glass Railings</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-calendar-alt"></i>
+                <p><strong>Completed:</strong> September 2023</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project 4 -->
+<div class="project-card">
+    <div class="project-image">
+        <div class="image-track" id="carousel4">
+            <img src="Assets/gallery/nivel.png" alt="Nivel Hills Condo 1">
+            <img src="Assets/gallery/nivel1.png" alt="Nivel Hills Condo 2">
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="4" data-slide="0"></div>
+            <div class="carousel-dot" data-carousel="4" data-slide="1"></div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>128 NIVEL HILLS CONDOMINIUM</h3>
+        <p>High-rise residential condominium featuring fire-rated metal doors and acoustic louver windows designed for urban living. Our solutions provide residents with safety compliance, noise reduction, and thermal insulation in a dense metropolitan environment.</p>
+        <div class="project-details">
+            <div class="detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Location:</strong> Lahug, Cebu City</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-tools"></i>
+                <p><strong>Services:</strong> Fire-Rated Metal Doors, Acoustic Louver Windows</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-calendar-alt"></i>
+                <p><strong>Completed:</strong> September 2023</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project 5 -->
+<div class="project-card">
+    <div class="project-image">
+        <div class="image-track" id="carousel5">
+            <img src="Assets/gallery/opus.png" alt="Opus Mall Entrance">
+            <img src="Assets/gallery/opus1.jpg" alt="Opus Mall Interior">
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="5" data-slide="0"></div>
+            <div class="carousel-dot" data-carousel="5" data-slide="1"></div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>OPUS MALL</h3>
+        <p>Modern shopping mall featuring heavy-duty roll-up grilles and storefront security systems. Our commercial-grade solutions provide retail tenants with maximum security during off-hours while maintaining attractive daytime aesthetics and smooth operation for daily business.</p>
+        <div class="project-details">
+            <div class="detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Location:</strong> Quezon City</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-tools"></i>
+                <p><strong>Services:</strong> Roll-up Grilles, Storefront Security Doors, Louver Windows</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-calendar-alt"></i>
+                <p><strong>Completed:</strong> November 2023</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project 6 -->
+<div class="project-card">
+    <div class="project-image">
+        <div class="image-track" id="carousel6">
+            <img src="Assets/gallery/pharena2.png" alt="PH Arena Exterior">
+            <img src="Assets/gallery/pharena5.png" alt="PH Arena Entrance Doors">
+            <img src="Assets/gallery/pharena.png" alt="PH Arena Staircase">
+            <img src="Assets/gallery/pharena1.png" alt="PH Arena Glass Balustrade">
+            <img src="Assets/gallery/pharena3.png" alt="PH Arena Viewing Area">
+            <img src="Assets/gallery/pharena4.png" alt="PH Arena Metal Railings">
+            <img src="Assets/gallery/pharena7.png" alt="PH Arena Service Doors">
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="6" data-slide="0"></div>
+            <div class="carousel-dot" data-carousel="6" data-slide="1"></div>
+            <div class="carousel-dot" data-carousel="6" data-slide="2"></div>
+            <div class="carousel-dot" data-carousel="6" data-slide="3"></div>
+            <div class="carousel-dot" data-carousel="6" data-slide="4"></div>
+            <div class="carousel-dot" data-carousel="6" data-slide="5"></div>
+            <div class="carousel-dot" data-carousel="6" data-slide="6"></div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>PHILIPPINE ARENA</h3>
+        <p>World-class multi-purpose arena featuring comprehensive door and railing systems. Our scope included fire-rated doors, stainless steel glass doors and windows, custom railings, and roll-up shutter doors designed to handle high-traffic volumes while meeting strict safety and accessibility standards.</p>
+        <div class="project-details">
+            <div class="detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Location:</strong> Ciudad de Victoria, Bocaue, Bulacan</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-tools"></i>
+                <p><strong>Services:</strong> Fire-Rated Doors, Stainless Steel Glass Systems, Safety Railings, Roll-up Shutter Doors</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-calendar-alt"></i>
+                <p><strong>Completed:</strong> December 2022</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project 7 -->
+<div class="project-card">
+    <div class="project-image">
+        <div class="image-track" id="carousel7">
+            <img src="Assets/gallery/bangkosentral.png" alt="Bangko Sentral Main Entrance">
+            <img src="Assets/gallery/bangkosentral1.png" alt="Bangko Sentral Security Doors">
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="7" data-slide="0"></div>
+            <div class="carousel-dot" data-carousel="7" data-slide="1"></div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>BANGKO SENTRAL NG PILIPINAS</h3>
+        <p>Central bank headquarters featuring high-security door systems and specialized architectural elements. Our installations include bullet-resistant doors, secure access systems, and custom architectural metalwork designed to meet the institution's stringent security requirements while maintaining functional elegance.</p>
+        <div class="project-details">
+            <div class="detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Location:</strong> East Avenue, Quezon City</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-tools"></i>
+                <p><strong>Services:</strong> High-Security Doors, Stainless Steel Systems, Custom Railings, Fire Exit Systems</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-calendar-alt"></i>
+                <p><strong>Completed:</strong> August 2023</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project 8 -->
+<div class="project-card">
+    <div class="project-image">
+        <div class="image-track" id="carousel8">
+            <img src="Assets/gallery/tipcubao.png" alt="TIP Cubao Building">
+            <img src="Assets/gallery/tipcubao1.png" alt="TIP Cubao Polycarbonate Door">
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="8" data-slide="0"></div>
+            <div class="carousel-dot" data-carousel="8" data-slide="1"></div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>TECHNOLOGICAL INSTITUTE OF THE PHILIPPINES - CUBAO</h3>
+        <p>Educational institution featuring transparent polycarbonate roll-up doors for laboratory and workshop areas. Our installation provides clear visibility, safety, and durability for high-traffic educational environments while allowing natural light transmission and easy access control.</p>
+        <div class="project-details">
+            <div class="detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Location:</strong> Cubao, Quezon City</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-tools"></i>
+                <p><strong>Services:</strong> Polycarbonate Roll-up Doors, Laboratory Door Systems</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-calendar-alt"></i>
+                <p><strong>Completed:</strong> October 2023</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Project 9 -->
+<div class="project-card">
+    <div class="project-image">
+        <div class="image-track" id="carousel9">
+            <img src="Assets/gallery/ivyhotel.png" alt="Ivy Hotel Exterior">
+            <img src="Assets/gallery/ivyhotel1.png" alt="Ivy Hotel Interior">
+        </div>
+        <div class="carousel-nav">
+            <div class="carousel-dot active" data-carousel="9" data-slide="0"></div>
+            <div class="carousel-dot" data-carousel="9" data-slide="1"></div>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>THE IVY WALL HOTEL</h3>
+        <p>Boutique hotel featuring specialized acoustic louver doors and custom metal sunshade windows. Our solutions provide optimal noise control between rooms, thermal comfort, and aesthetic appeal for a premium hospitality experience in a tropical setting.</p>
+        <div class="project-details">
+            <div class="detail">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Location:</strong> Puerto Princesa, Palawan</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-tools"></i>
+                <p><strong>Services:</strong> Acoustic Louver Doors, Metal Sunshade Windows, Aluminum Architectural Elements</p>
+            </div>
+            <div class="detail">
+                <i class="fas fa-calendar-alt"></i>
+                <p><strong>Completed:</strong> July 2023</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a class="logo">
+                        <img src="Assets/logo.png" alt="logo" style="height: 50px; width: auto; margin-right: 10px;">
+                        <div class="logo-text">
+                            <span class="logo-main">FILIPINAS <span class="outlined-text">ASIA</span> SHUTTER DOOR CORPORATION</span>
+                        </div>
+                    </a>
+                    <p>Manufacturing quality industrial and commercial doors in the Philippines since 1973.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 
+                        <a href="https://maps.app.goo.gl/1oWoqXr9N194UMi5A" target="_blank" rel="noopener noreferrer">
+                            <strong>23 Ortigas Ave. Ext., Brgy. San Juan Cainta, Rizal, 1800</strong>
+                        </a>
+                    </p>
+                    <p><i class="fas fa-envelope"></i> 
+                        <a href="mailto:filasiashutterdoorcorp@yahoo.com.ph?subject=Inquiry%20from%20Website&body=Hello%20Filipinas%20Asia%20Shutter%20Door%20Corp.,%0A%0AI%20would%20like%20to%20inquire%20about%20your%20products/services.">
+                            <strong>filasiashutterdoorcorp@yahoo.com.ph</strong>
+                        </a>
+                    </p>
+                    <p><i class="fas fa-envelope"></i> 
+                        <a href="mailto:service_filasiashutters@yahoo.com?subject=Inquiry%20from%20Website&body=Hello%20Filipinas%20Asia%20Shutter%20Door%20Corp.,%0A%0AI%20would%20like%20to%20inquire%20about%20your%20products/services.">
+                            <strong>service_filasiashutters@yahoo.com</strong>
+                        </a>
+                    </p>
+                    <p><i class="fas fa-phone"></i> <strong>8655-1501</strong></p>
+                    <p><i class="fas fa-phone"></i> <strong>8655-5165</strong></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Filipinas Asia Shutter Door Corporation. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
