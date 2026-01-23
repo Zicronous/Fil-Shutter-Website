@@ -176,6 +176,134 @@ if (window.location.hash) {
             }
         });
     }
+
+    // Dynamic product type dropdown based on category selection
+    const categorySelect = document.getElementById('category');
+    const productTypeGroup = document.getElementById('productTypeGroup');
+    const productSelect = document.getElementById('product');
+
+    if (categorySelect && productTypeGroup && productSelect) {
+        categorySelect.addEventListener('change', function() {
+            const selectedCategory = this.value;
+            const productOptions = productSelect.querySelectorAll('option');
+            
+            // Clear existing options except the first one
+            productOptions.forEach((option, index) => {
+                if (index > 0) option.remove();
+            });
+
+            if (selectedCategory === 'RUD') {
+                productTypeGroup.style.display = 'block';
+                productSelect.required = true;
+                
+                const rudOptions = [
+                    { value: 'StandardRUD', text: 'Standard Roll-Up Door' },
+                    { value: 'GrilleRUD', text: 'Grille Roll-Up Door' },
+                    { value: 'PolyRUD', text: 'Polycarbonate Roll-Up Door' },
+                    { value: 'NoiselessRUD', text: 'Noiseless Roll-Up Door' }
+                ];
+                rudOptions.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    productSelect.appendChild(optionElement);
+                });
+            } else if (selectedCategory === 'Metal Door') {
+                productTypeGroup.style.display = 'block';
+                productSelect.required = true;
+                
+                const metalDoorOptions = [
+                    { value: 'PlainType', text: 'Plain Type Metal Door' },
+                    { value: 'HalfLouver', text: 'With Half Louver Metal Door' },
+                    { value: 'BottomLouver', text: 'With Bottom Louver Metal Door' },
+                    { value: 'Narrowlite', text: 'With Narrowlite Viewing Glass Metal Door' },
+                    { value: 'HalfGlass', text: 'With Half Viewing Glass Metal Door' },
+                    { value: 'HalfGlass&Louvers', text: 'With Half Glass & Louver Metal Door' },
+                    { value: 'NarrowliteBottomLouver', text: 'With Narrowlite & Bottom Louvers Metal Door' },
+                    { value: 'FullyLouvered', text: 'Fully Louvered Metal Door' }
+                ];
+                
+                metalDoorOptions.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    productSelect.appendChild(optionElement);
+                });
+            } else if (selectedCategory === 'Louver Window') {
+                productTypeGroup.style.display = 'block';
+                productSelect.required = true;
+                
+                const louverOptions = [
+                    { value: 'Acoustic', text: 'Acoustic Louver Window' },
+                    { value: 'Z-Type', text: 'Z Type Louver Window' },
+                    { value: 'StormType', text: 'Storm Type Louver Window' }
+                ];
+                
+                louverOptions.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    productSelect.appendChild(optionElement);
+                });
+            } else if (selectedCategory === 'Architectural') {
+                productTypeGroup.style.display = 'block';
+                productSelect.required = true;
+                
+                const architecturalOptions = [
+                    { value: 'Ballustrade', text: 'Steel Ballustrade' },
+                    { value: 'StainlessRailing', text: 'Stainless Railing' },
+                    { value: 'GlassRailing', text: 'Glass Railing' },
+                    { value: 'ACP', text: 'ACP Cladding' },
+                    { value: 'Swing/Slide', text: 'Sliding/Swing Gate' }
+                ];
+                
+                architecturalOptions.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    productSelect.appendChild(optionElement);
+                });
+            } else if (selectedCategory === 'Other') {
+                productTypeGroup.style.display = 'block';
+                productSelect.required = true;
+                
+                const otherOption = [
+                    { value: 'Maintenance', text: 'Maintenance Service' },
+                    { value: 'Repair', text: 'Repair Service' },
+                    { value: 'Construction', text: 'Construction Service' },
+                    { value: 'Consultation', text: 'Technical Consultation' }
+                ]
+                otherOption.forEach(option => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = option.value;
+                    optionElement.textContent = option.text;
+                    productSelect.appendChild(optionElement);
+                });
+
+            } else {
+                productTypeGroup.style.display = 'none';
+                productSelect.required = false;
+            }
+        });
+
+        // Auto-populate form from URL parameters (moved here after event listener is attached)
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryParam = urlParams.get('category');
+        const productParam = urlParams.get('product');
+
+        if (categoryParam && categorySelect) {
+            categorySelect.value = categoryParam;
+            // Trigger the change event to show product type dropdown
+            categorySelect.dispatchEvent(new Event('change'));
+            
+            // If product parameter is provided, select it after a short delay to allow options to populate
+            if (productParam && productSelect) {
+                setTimeout(() => {
+                    productSelect.value = productParam;
+                }, 100);
+            }
+        }
+    }
     
     const galleryItems = document.querySelectorAll('.gallery-item');
     if (galleryItems.length > 0) {

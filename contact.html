@@ -119,7 +119,7 @@
                         </div>
                         
                         <form id="quoteForm" action="https://formsubmit.co/goldy.linky@gmail.com" method="POST" class="contact-form">
-                            <input type="hidden" name="_cc" value="gonzagaemmerson@gmail.com, uzai.usumaki@email.com">
+                            <input type="hidden" name="_cc" value="gonzagaemmerson@gmail.com,uzai.usumaki@gmail.com">
                             <div class="form-group">
                                 <label for="name">Full Name *</label>
                                 <input type="text" id="name" name="name" required placeholder="Enter your full name">
@@ -142,14 +142,21 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="product">Product Interest *</label>
-                                <select id="product" name="product" required>
+                                <label for="category">Product Interest *</label>
+                                <select id="category" name="category" required>
                                     <option value="" disabled selected>Select a product category</option>
                                     <option value="RUD">Roll-Up Doors</option>
                                     <option value="Metal Door">Metal Doors</option>
                                     <option value="Louver Window">Louver Windows</option>
                                     <option value="Architectural">Architectural Elements</option>
-                                    <option value="Other">Other / Not Sure</option>
+                                    <option value="Other">Others</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group product-type-group" id="productTypeGroup" style="display: none;">
+                                <label for="product">Select Product Type *</label>
+                                <select id="product" name="product">
+                                    <option value="" disabled selected>Select a product type</option>
                                 </select>
                             </div>
                             
