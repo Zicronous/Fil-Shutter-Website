@@ -425,7 +425,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ===== SIMPLE CAROUSEL THAT WILL WORK =====
+// ===== SIMPLE CAROUSEL WITH TOUCH SWIPE =====
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Page loaded, initializing carousels...');
     
@@ -454,6 +454,11 @@ document.addEventListener('DOMContentLoaded', function() {
         let currentIndex = 0;
         const totalImages = images.length;
         
+        // Variables for touch/swipe
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+        
         // 1. First, fix the display issue
         track.style.display = 'flex';
         track.style.transition = 'transform 0.5s ease';
@@ -475,12 +480,22 @@ document.addEventListener('DOMContentLoaded', function() {
             });
             
             // Move to current slide
-            moveToSlide(currentIndex);
+            moveToSlide(currentIndex, false);
         }
         
         // 3. Function to move to a specific slide
-        function moveToSlide(slideIndex) {
+        function moveToSlide(slideIndex, animate = true) {
+            if (slideIndex < 0) slideIndex = totalImages - 1;
+            if (slideIndex >= totalImages) slideIndex = 0;
+            
             const containerWidth = carouselContainer.offsetWidth;
+            
+            if (animate) {
+                track.style.transition = 'transform 0.3s ease';
+            } else {
+                track.style.transition = 'none';
+            }
+            
             track.style.transform = `translateX(-${slideIndex * containerWidth}px)`;
             
             // Update dots
@@ -491,7 +506,84 @@ document.addEventListener('DOMContentLoaded', function() {
             currentIndex = slideIndex;
         }
         
-        // 4. Click handlers for dots
+        // 4. Next/Previous functions
+        function nextSlide() {
+            moveToSlide(currentIndex + 1);
+        }
+        
+        function prevSlide() {
+            moveToSlide(currentIndex - 1);
+        }
+        
+        // 5. TOUCH/SWIPE HANDLERS
+        
+        // Touch start
+        function handleTouchStart(e) {
+            isDragging = true;
+            startX = e.touches ? e.touches[0].clientX : e.clientX;
+            currentX = startX;
+            track.style.transition = 'none';
+        }
+        
+        // Touch move
+        function handleTouchMove(e) {
+            if (!isDragging) return;
+            
+            currentX = e.touches ? e.touches[0].clientX : e.clientX;
+            const diff = currentX - startX;
+            const containerWidth = carouselContainer.offsetWidth;
+            const dragOffset = -currentIndex * containerWidth + diff;
+            
+            track.style.transform = `translateX(${dragOffset}px)`;
+            
+            // Prevent page scroll while dragging
+            if (Math.abs(diff) > 10) {
+                e.preventDefault();
+            }
+        }
+        
+        // Touch end
+        function handleTouchEnd(e) {
+            if (!isDragging) return;
+            
+            isDragging = false;
+            const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
+            const diff = endX - startX;
+            const containerWidth = carouselContainer.offsetWidth;
+            const threshold = containerWidth * 0.15; // 15% threshold for swipe
+            
+            if (Math.abs(diff) > threshold) {
+                if (diff > 0) {
+                    // Swiped RIGHT - go to previous slide
+                    prevSlide();
+                } else {
+                    // Swiped LEFT - go to next slide
+                    nextSlide();
+                }
+            } else {
+                // Not enough swipe - return to current slide
+                moveToSlide(currentIndex);
+            }
+            
+            track.style.transition = 'transform 0.3s ease';
+        }
+        
+        // 6. Add event listeners for touch
+        track.addEventListener('touchstart', handleTouchStart, { passive: false });
+        track.addEventListener('touchmove', handleTouchMove, { passive: false });
+        track.addEventListener('touchend', handleTouchEnd, { passive: false });
+        
+        // 7. Add event listeners for mouse (for desktop testing)
+        track.addEventListener('mousedown', handleTouchStart);
+        track.addEventListener('mousemove', function(e) {
+            if (isDragging) {
+                handleTouchMove(e);
+            }
+        });
+        track.addEventListener('mouseup', handleTouchEnd);
+        track.addEventListener('mouseleave', handleTouchEnd);
+        
+        // 8. Click handlers for dots
         dots.forEach((dot, i) => {
             dot.addEventListener('click', function() {
                 console.log('Clicked dot', i);
@@ -505,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // 5. Auto-rotate functionality
+        // 9. Auto-rotate functionality
         let autoRotateInterval;
         
         function startAutoRotate() {
@@ -514,22 +606,88 @@ document.addEventListener('DOMContentLoaded', function() {
             autoRotateInterval = setInterval(() => {
                 let nextIndex = (currentIndex + 1) % totalImages;
                 moveToSlide(nextIndex);
-            }, 3000); // Change every 3 seconds
+            }, 4000); // Change every 4 seconds
         }
         
-        // Pause on hover
-        carouselContainer.addEventListener('mouseenter', () => {
+        function stopAutoRotate() {
             if (autoRotateInterval) {
                 clearInterval(autoRotateInterval);
+                autoRotateInterval = null;
             }
+        }
+        
+        // Pause on hover/drag
+        carouselContainer.addEventListener('mouseenter', stopAutoRotate);
+        carouselContainer.addEventListener('mouseleave', startAutoRotate);
+        
+        // Pause on touch
+        track.addEventListener('touchstart', stopAutoRotate);
+        track.addEventListener('touchend', () => {
+            setTimeout(startAutoRotate, 3000); // Resume after 3 seconds
         });
         
-        // Resume on mouse leave
-        carouselContainer.addEventListener('mouseleave', () => {
-            startAutoRotate();
-        });
+        // 10. Add visual swipe hint for mobile
+        if (window.innerWidth <= 768) {
+            // Create swipe hint
+            const swipeHint = document.createElement('div');
+            swipeHint.className = 'swipe-hint';
+            swipeHint.innerHTML = '<i class="fas fa-arrows-left-right"></i> Swipe';
+            swipeHint.style.cssText = `
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                background: rgba(0,0,0,0.7);
+                color: white;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 0.8rem;
+                z-index: 10;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                animation: pulse 2s infinite;
+            `;
+            
+            // Add CSS for animation
+            if (!document.querySelector('#swipeHintStyle')) {
+                const style = document.createElement('style');
+                style.id = 'swipeHintStyle';
+                style.textContent = `
+                    @keyframes pulse {
+                        0%, 100% { opacity: 0.7; }
+                        50% { opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            carouselContainer.style.position = 'relative';
+            carouselContainer.appendChild(swipeHint);
+            
+            // Remove hint after 5 seconds or on first interaction
+            setTimeout(() => {
+                swipeHint.style.opacity = '0';
+                setTimeout(() => {
+                    if (swipeHint.parentNode) {
+                        swipeHint.parentNode.removeChild(swipeHint);
+                    }
+                }, 300);
+            }, 5000);
+            
+            track.addEventListener('touchstart', () => {
+                if (swipeHint.parentNode) {
+                    swipeHint.style.opacity = '0';
+                    setTimeout(() => {
+                        if (swipeHint.parentNode) {
+                            swipeHint.parentNode.removeChild(swipeHint);
+                        }
+                    }, 300);
+                }
+            });
+        }
         
-        // 6. Initialize everything when images load
+        // 11. Initialize everything when images load
         let loadedCount = 0;
         
         images.forEach(img => {
@@ -574,5 +732,5 @@ document.addEventListener('DOMContentLoaded', function() {
         window.addEventListener('resize', updateTrackWidth);
     });
     
-    console.log('Carousel setup complete');
+    console.log('Carousel setup complete with swipe support');
 });
