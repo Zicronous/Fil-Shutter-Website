@@ -10,7 +10,6 @@
 </head>
 <body>
     <!-- Navigation -->
-    <header class="header">
         <nav class="navbar">
             <div class="container">
                 <a href="index.html" class="logo">
@@ -31,7 +30,6 @@
                 </ul>
             </div>
         </nav>
-    </header>
 
     <main>
         <!-- Page Header -->
@@ -180,9 +178,65 @@
                 <h2 class="section-title">Find Our Factory</h2>
                 <p class="section-subtitle">Visit our manufacturing facility in Cainta, Rizal</p>
                 
-                <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!4v1768440759968!6m8!1m7!1sTIddmE-pwkvYfbisMKoJNQ!2m2!1d14.58255061867305!2d121.1278032962566!3f338.02!4f-9.920000000000002!5f0.7820865974627469" width="1170" height="600" style="border:0;" allowfullscre0en="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                <div class="map-wrapper">
+  <div class="responsive-map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!4v1769502540151!6m8!1m7!1sTIddmE-pwkvYfbisMKoJNQ!2m2!1d14.58255061867305!2d121.1278032962566!3f338.02!4f-9.920000000000002!5f0.5970117501821992" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</div>
+
+<style>
+.map-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.responsive-map-container {
+  width: 100%;
+  max-width: 908px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.responsive-map-container iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .responsive-map-container iframe {
+    height: 280px;
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-map-container iframe {
+    height: 250px;
+  }
+  .map-wrapper {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .responsive-map-container iframe {
+    height: 220px;
+  }
+  .map-wrapper {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .responsive-map-container iframe {
+    height: 200px;
+  }
+}
+</style>
                 
                 <div class="location-details">
                     <div class="location-card">
@@ -308,104 +362,5 @@
     </footer>
 
     <script src="main.js"></script>
-    <!-- Contact-specific JavaScript -->
-    <script>
-        // FAQ Toggle Functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const faqItem = this.parentElement;
-                    const faqAnswer = this.nextElementSibling;
-                    const icon = this.querySelector('i');
-                    
-                    // Toggle active class
-                    faqItem.classList.toggle('active');
-                    
-                    // Toggle answer visibility
-                    if (faqItem.classList.contains('active')) {
-                        faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
-                        faqAnswer.style.padding = '15px 0';
-                        icon.classList.remove('fa-chevron-down');
-                        icon.classList.add('fa-chevron-up');
-                    } else {
-                        faqAnswer.style.maxHeight = '0';
-                        faqAnswer.style.padding = '0';
-                        icon.classList.remove('fa-chevron-up');
-                        icon.classList.add('fa-chevron-down');
-                    }
-                });
-            });
-            
-            // Initialize FAQ answers as closed
-            document.querySelectorAll('.faq-answer').forEach(answer => {
-                answer.style.maxHeight = '0';
-                answer.style.overflow = 'hidden';
-                answer.style.transition = 'max-height 0.3s ease, padding 0.3s ease';
-            });
-            
-            // Enhanced form validation
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    let isValid = true;
-                    const requiredFields = this.querySelectorAll('[required]');
-                    
-                    // Clear previous error messages
-                    this.querySelectorAll('.error-message').forEach(error => error.remove());
-                    this.querySelectorAll('.form-group').forEach(group => group.classList.remove('error'));
-                    
-                    // Validate required fields
-                    requiredFields.forEach(field => {
-                        if (!field.value.trim()) {
-                            isValid = false;
-                            showError(field, 'This field is required');
-                        } else if (field.type === 'email' && !isValidEmail(field.value)) {
-                            isValid = false;
-                            showError(field, 'Please enter a valid email address');
-                        } else if (field.id === 'phone' && !isValidPhone(field.value)) {
-                            isValid = false;
-                            showError(field, 'Please enter a valid Philippine phone number');
-                        }
-                    });
-                    
-                    if (isValid) {
-                        // In a real application, you would send the form data to a server
-                        alert('Thank you for your quote request! We will contact you within 24 hours.');
-                        contactForm.reset();
-                    }
-                });
-            }
-            
-            // Helper functions for validation
-            function showError(field, message) {
-                const formGroup = field.closest('.form-group');
-                formGroup.classList.add('error');
-                
-                const errorMsg = document.createElement('small');
-                errorMsg.classList.add('error-message');
-                errorMsg.textContent = message;
-                errorMsg.style.color = '#dc3545';
-                errorMsg.style.display = 'block';
-                errorMsg.style.marginTop = '5px';
-                errorMsg.style.fontSize = '0.85rem';
-                
-                formGroup.appendChild(errorMsg);
-            }
-            
-            function isValidEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(email);
-            }
-            
-            function isValidPhone(phone) {
-                const re = /^(09|\+639)\d{9}$/;
-                return re.test(phone.replace(/\s/g, ''));
-            }
-        });
-    </script>
 </body>
 </html>

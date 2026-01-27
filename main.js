@@ -734,3 +734,100 @@ document.addEventListener('DOMContentLoaded', function() {
     
     console.log('Carousel setup complete with swipe support');
 });
+        
+        // FAQ Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const faqAnswer = this.nextElementSibling;
+                    const icon = this.querySelector('i');
+                    
+                    // Toggle active class
+                    faqItem.classList.toggle('active');
+                    
+                    // Toggle answer visibility
+                    if (faqItem.classList.contains('active')) {
+                        faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 'px';
+                        faqAnswer.style.padding = '15px 0';
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
+                    } else {
+                        faqAnswer.style.maxHeight = '0';
+                        faqAnswer.style.padding = '0';
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
+                    }
+                });
+            });
+            
+            // Initialize FAQ answers as closed
+            document.querySelectorAll('.faq-answer').forEach(answer => {
+                answer.style.maxHeight = '0';
+                answer.style.overflow = 'hidden';
+                answer.style.transition = 'max-height 0.3s ease, padding 0.3s ease';
+            });
+            
+            // Enhanced form validation
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    let isValid = true;
+                    const requiredFields = this.querySelectorAll('[required]');
+                    
+                    // Clear previous error messages
+                    this.querySelectorAll('.error-message').forEach(error => error.remove());
+                    this.querySelectorAll('.form-group').forEach(group => group.classList.remove('error'));
+                    
+                    // Validate required fields
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            showError(field, 'This field is required');
+                        } else if (field.type === 'email' && !isValidEmail(field.value)) {
+                            isValid = false;
+                            showError(field, 'Please enter a valid email address');
+                        } else if (field.id === 'phone' && !isValidPhone(field.value)) {
+                            isValid = false;
+                            showError(field, 'Please enter a valid Philippine phone number');
+                        }
+                    });
+                    
+                    if (isValid) {
+                        // In a real application, you would send the form data to a server
+                        alert('Thank you for your quote request! We will contact you within 24 hours.');
+                        contactForm.reset();
+                    }
+                });
+            }
+            
+            // Helper functions for validation
+            function showError(field, message) {
+                const formGroup = field.closest('.form-group');
+                formGroup.classList.add('error');
+                
+                const errorMsg = document.createElement('small');
+                errorMsg.classList.add('error-message');
+                errorMsg.textContent = message;
+                errorMsg.style.color = '#dc3545';
+                errorMsg.style.display = 'block';
+                errorMsg.style.marginTop = '5px';
+                errorMsg.style.fontSize = '0.85rem';
+                
+                formGroup.appendChild(errorMsg);
+            }
+            
+            function isValidEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(email);
+            }
+            
+            function isValidPhone(phone) {
+                const re = /^(09|\+639)\d{9}$/;
+                return re.test(phone.replace(/\s/g, ''));
+            }
+        });
