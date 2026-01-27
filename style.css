@@ -1397,9 +1397,9 @@ a:hover {
 }
 
 .outlined-text {
-  color: transparent;
-  -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #cefeb1;
-  font-size: 4x;
-  font-weight: bold;
+    color: #ffffff; 
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #c9fea9; 
+    paint-order: stroke fill; 
+    font-weight: bold;
 }
