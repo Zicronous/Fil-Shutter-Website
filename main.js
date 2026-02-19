@@ -181,8 +181,10 @@ if (window.location.hash) {
     const categorySelect = document.getElementById('category');
     const productTypeGroup = document.getElementById('productTypeGroup');
     const productSelect = document.getElementById('product');
+    const insulationGroup = document.getElementById('insulationGroup');
+    const insulationSelect = document.getElementById('insulation');
 
-    if (categorySelect && productTypeGroup && productSelect) {
+    if (categorySelect && productTypeGroup && productSelect && insulationGroup && insulationSelect) {
         categorySelect.addEventListener('change', function() {
             const selectedCategory = this.value;
             const productOptions = productSelect.querySelectorAll('option');
@@ -191,6 +193,9 @@ if (window.location.hash) {
             productOptions.forEach((option, index) => {
                 if (index > 0) option.remove();
             });
+
+            insulationGroup.style.display = 'none';
+            insulationSelect.required = false;
 
             if (selectedCategory === 'RUD') {
                 productTypeGroup.style.display = 'block';
@@ -212,18 +217,27 @@ if (window.location.hash) {
                 productTypeGroup.style.display = 'block';
                 productSelect.required = true;
                 
+                insulationGroup.style.display = 'block';
+                insulationSelect.required = true;
+
                 const metalDoorOptions = [
                     { value: 'PlainType', text: 'Plain Type Metal Door' },
-                    { value: 'HalfLouver', text: 'With Half Louver Metal Door' },
-                    { value: 'BottomLouver', text: 'With Bottom Louver Metal Door' },
-                    { value: 'Narrowlite', text: 'With Narrowlite Viewing Glass Metal Door' },
-                    { value: 'HalfGlass', text: 'With Half Viewing Glass Metal Door' },
-                    { value: 'HalfGlass&Louvers', text: 'With Half Glass & Louver Metal Door' },
-                    { value: 'NarrowliteBottomLouver', text: 'With Narrowlite & Bottom Louvers Metal Door' },
+                    { value: 'HalfLouver', text: 'Half Louver Metal Door' },
+                    { value: 'BottomLouver', text: 'Bottom Louver Metal Door' },
+                    { value: 'Narrowlite', text: 'Narrowlite Viewing Glass Metal Door' },
+                    { value: 'HalfGlass', text: 'Half Viewing Glass Metal Door' },
+                    { value: 'HalfGlass&Louvers', text: 'Half Glass & Louver Metal Door' },
+                    { value: 'NarrowliteBottomLouver', text: 'Narrowlite & Bottom Louvers Metal Door' },
                     { value: 'FullyLouvered', text: 'Fully Louvered Metal Door' }
                 ];
+
+                const insulationOptions = [
+                    { value: 'None', text: 'No Insulation' },
+                    { value: 'Honey Comb', text: 'Honey Comb Insulation' },
+                    { value: 'Rock wool', text: 'Rockwool Mineral Wool Insulation' }
+                ];
                 
-                metalDoorOptions.forEach(option => {
+                    metalDoorOptions.forEach(option => {
                     const optionElement = document.createElement('option');
                     optionElement.value = option.value;
                     optionElement.textContent = option.text;
@@ -284,19 +298,17 @@ if (window.location.hash) {
                 productTypeGroup.style.display = 'none';
                 productSelect.required = false;
             }
+            categorySelect.removeEventListener('change', categoryChangeHandler);
+            categorySelect.addEventListener('change', categoryChangeHandler);
         });
-
-        // Auto-populate form from URL parameters (moved here after event listener is attached)
         const urlParams = new URLSearchParams(window.location.search);
         const categoryParam = urlParams.get('category');
         const productParam = urlParams.get('product');
 
         if (categoryParam && categorySelect) {
             categorySelect.value = categoryParam;
-            // Trigger the change event to show product type dropdown
             categorySelect.dispatchEvent(new Event('change'));
             
-            // If product parameter is provided, select it after a short delay to allow options to populate
             if (productParam && productSelect) {
                 setTimeout(() => {
                     productSelect.value = productParam;
@@ -831,3 +843,63 @@ document.addEventListener('DOMContentLoaded', function() {
                 return re.test(phone.replace(/\s/g, ''));
             }
         });
+
+        // How It Works - Sequential Hover Effect
+document.addEventListener('DOMContentLoaded', function() {
+    const stepItems = document.querySelectorAll('.step-item');
+    const stepConnectors = document.querySelectorAll('.step-connector');
+    
+    // Reset all to default
+    function resetSteps() {
+        stepItems.forEach((item, index) => {
+            const number = item.querySelector('.step-number');
+            const title = item.querySelector('h4');
+            const desc = item.querySelector('p');
+            
+            number.style.background = 'white';
+            number.style.borderColor = '#e0e0e0';
+            number.style.color = '#999';
+            if (title) title.style.color = '#666';
+            if (desc) desc.style.color = '#999';
+        });
+        
+        stepConnectors.forEach(connector => {
+            connector.style.background = '#e0e0e0';
+        });
+    }
+    
+    // Highlight steps up to the hovered index
+    function highlightUpTo(index) {
+        resetSteps();
+        
+        // Highlight steps 0 through index
+        for (let i = 0; i <= index; i++) {
+            const step = stepItems[i];
+            const number = step.querySelector('.step-number');
+            const title = step.querySelector('h4');
+            const desc = step.querySelector('p');
+            
+            number.style.background = '#2e8b57';
+            number.style.borderColor = '#2e8b57';
+            number.style.color = 'white';
+            if (title) title.style.color = '#2e8b57';
+            if (desc) desc.style.color = '#666';
+        }
+        
+        // Highlight connectors up to index-1
+        for (let i = 0; i < index; i++) {
+            if (stepConnectors[i]) {
+                stepConnectors[i].style.background = '#2e8b57';
+            }
+        }
+    }
+    
+    // Add hover events
+    stepItems.forEach((item, index) => {
+        item.addEventListener('mouseenter', () => {
+            highlightUpTo(index);
+        });
+        
+        item.addEventListener('mouseleave', resetSteps);
+    });
+});
