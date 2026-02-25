@@ -879,17 +879,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const title = step.querySelector('h4');
             const desc = step.querySelector('p');
             
-            number.style.background = '#2e8b57';
+            number.style.background = '#001D00';
             number.style.borderColor = '#2e8b57';
             number.style.color = 'white';
-            if (title) title.style.color = '#2e8b57';
-            if (desc) desc.style.color = '#666';
+            if (title) title.style.color = '#000000';
+            if (desc) desc.style.color = '#000000c7';
         }
         
         // Highlight connectors up to index-1
         for (let i = 0; i < index; i++) {
             if (stepConnectors[i]) {
-                stepConnectors[i].style.background = '#2e8b57';
+                stepConnectors[i].style.background = '#002D04';
             }
         }
     }

@@ -7,6 +7,7 @@
     <link rel="icon" type="image/png" href="Assets/FASDC logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
 </head>
 <body>
     <!-- Navigation -->
@@ -33,7 +34,7 @@
 
     <main>
         <!-- Page Header -->
-        <section class="page-header">
+        <section class="contact-hero">
             <div class="container">
                 <h1>Contact Us</h1>
                 <p>Get in touch for quotes, consultations, or technical support</p>
@@ -41,7 +42,7 @@
         </section>
 
         <!-- Contact Information & Form -->
-        <section class="section">
+        <section class="section get-in-touch">
             <div class="container">
                 <div class="contact-grid">
                     <!-- Contact Information -->
@@ -113,34 +114,34 @@
                     <!-- Contact Form -->
                     <div class="contact-form-container" id="quote">
                         <div class="form-header">
-                            <h3>Request a Quote</h3>
-                            <p>Fill out this form for a free, no-obligation quotation</p>
+                            <h3 style="color: white;">Request a Quote</h3>
+                            <p style="color: white;">Fill out this form for a free, no-obligation quotation</p>
                         </div>
                         
                         <form id="quoteForm" action="https://formsubmit.co/goldy.linky@gmail.com" method="POST" class="contact-form">
                            <input type="hidden" name="_cc" value="filasiashutterdoorcorp@yahoo.com.ph,service_filasiashutters@yahoo.com">
                             <div class="form-group">
-                                <label for="name">Full Name *</label>
+                                <label for="name" style="color: rgb(255, 255, 255);">Full Name *</label>
                                 <input type="text" id="name" name="name" required placeholder="Enter your full name">
                             </div>
                             <div class="form-row">
                                 <div class="form-group">
-                                    <label for="email">Email Address *</label>
+                                    <label for="email" style="color: rgb(255, 255, 255);">Email Address *</label>
                                     <input type="email" id="email" name="email" required placeholder="your.email@example.com">
                                 </div>
                                 <div class="form-group">
-                                    <label for="phone">Phone Number *</label>
+                                    <label for="phone" style="color: rgb(255, 255, 255);">Phone Number *</label>
                                     <input type="tel" id="phone" name="phone" required placeholder="09XX XXX XXXX">
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <label for="company">Company Name</label>
+                                <label for="company" style="color: rgb(255, 255, 255);">Company Name</label>
                                 <input type="text" id="company" name="company" placeholder="Your company (if applicable)">
                             </div>
 
                             <div class="form-group">
-                                <label for="category">Product Interest *</label>
+                                <label for="category" style="color: rgb(255, 255, 255);">Product Interest *</label>
                                 <select id="category" name="category" required>
                                     <option value="" disabled selected>Select a product category</option>
                                     <option value="RUD">Roll-Up Doors</option>
@@ -152,28 +153,28 @@
                             </div>
 
                             <div class="form-group product-type-group" id="productTypeGroup" style="display: none;">
-                                <label for="product">Select Product Type *</label>
+                                <label for="product" style="color: rgb(255, 251, 251);" >Select Product Type *</label>
                                 <select id="product" name="product">
                                     <option value="" disabled selected>Select a product type</option>
                                 </select>
                             </div>
 
                             <div class="form-group insulation-group" id="insulationGroup" style="display: none;">
-                                <label for="insulation ">Insulation Option</label>
+                                <label for="insulation " style="color: rgb(255, 255, 255);" >Insulation Option</label>
                                 <select id="insulation" name="insulation">
                                     <option value="" disabled selected>Select insulation option</option>
                                     <option value="Honey Comb">Honey Comb Insulation</option>
                                     <option value="Rockwool">Rockwool Mineral Wool Insulation</option>
                                     <option value="None">None</option>
                                 </select>
-                                <small class="form-text">Optional: Add insulation for efficient thermal and acoustic barrier.</small>
+                                <small class="form-text" style="color: rgb(255, 255, 255);">Optional: Add insulation for efficient thermal and acoustic barrier.</small>
                             </div>
                             
                             <div class="form-group">
-                                <label for="project">Project Details *</label>
+                                <label for="project" style="color: rgb(255, 255, 255);">Project Details *</label>
                                 <textarea id="project" name="project" rows="4" required placeholder="Describe your project, including dimensions, location, and any special requirements"></textarea>
                             </div>      
-                            <button type="submit" class="btn btn-primary btn-block">
+                            <button type="submit" class="btn btn-block btn-contact-form">
                                 <i class="fas fa-paper-plane"></i> Submit Quote Request
                             </button>
                             <p class="form-note">* Required fields. We respect your privacy and will not share your information with third parties.</p>
@@ -184,8 +185,8 @@
         </section>
 
         <!-- Map Section -->
-        <section class="section map-section">
-            <div class="container">
+        <section class="section">
+            <div class="map-section-container">
                 <h2 class="section-title">Find Our Factory</h2>
                 <p class="section-subtitle">Visit our manufacturing facility in Cainta, Rizal</p>
                 
@@ -199,7 +200,7 @@
 .map-wrapper {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  background-color: white;
 }
 
 .responsive-map-container {
@@ -228,17 +229,11 @@
   .responsive-map-container iframe {
     height: 250px;
   }
-  .map-wrapper {
-    padding: 15px;
-  }
 }
 
 @media (max-width: 576px) {
   .responsive-map-container iframe {
     height: 220px;
-  }
-  .map-wrapper {
-    padding: 10px;
   }
 }
 
