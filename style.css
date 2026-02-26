@@ -710,15 +710,7 @@ ul
 .section-title
 {
     font-size: 2.5rem;
-    color: #000000; /* Section title text color */
-    margin-bottom: 20px;
-    position: relative;
-    text-align: center;
-}
-
-.section-title h2 {
-    font-size: 2.5rem;
-    color: #000000; /* Section title text color */
+    color: #ffffff; /* Section title text color */
     margin-bottom: 20px;
     position: relative;
     text-align: center;
@@ -732,7 +724,7 @@ ul
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background-color: #002D04; /* Section title underline color */
+    background-color: #ffffff; /* Section title underline color */
     border-radius: 2px;
 }
 .section-subtitle
@@ -740,7 +732,7 @@ ul
     text-align: center;
     max-width: 600px;
     margin: 0 auto 50px;
-    color: #000000;
+    color: #ffffff;
 }
 .section-how-it-works
 {
@@ -1598,7 +1590,7 @@ section.product-category
 }
 .faq-item
 {
-    background-color: rgb(233, 231, 231);
+    background-color: rgb(255, 255, 255);
     border-radius: 8px;
     margin-bottom: 15px;
     overflow: hidden;
@@ -2263,7 +2255,26 @@ section.section:has(.map-section-container)
 .history-section
 {
     padding: 100px 0;
-    background: #ffffff;
+    background-color: #EBEBEB;
+}
+
+.history-section::before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 140px; /* adjust height to taste */
+    background: linear-gradient(left, rgba(255,255,255,1) 70%, rgba(240,240,240,1) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.history-section .container
+{
+    position: relative;
+    z-index: 3; /* ensure content displays above the overlay */
 }
 .history-grid
 {
@@ -2392,6 +2403,10 @@ section.section:has(.map-section-container)
     font-weight: 700;
     max-width: 800px;
     margin: 0 auto;
+}
+
+.why-choose-section .section-header h2 {
+    color: #ffffff;
 }
 
 .section-header .section-title
@@ -2638,7 +2653,7 @@ section.section:has(.map-section-container)
 .why-choose-section
 {
     padding: 100px 0;
-    background: #ffffff;
+    background: #003104; /* Why choose us section background - About page */
 }
 .advantages-grid-modern
 {
@@ -2683,7 +2698,7 @@ section.section:has(.map-section-container)
 }
 .advantage-modern p
 {
-    color: #4A4A4A;
+    color: #000000;
     line-height: 1.7;
     margin: 0;
     font-size: 0.95rem;
@@ -3149,3 +3164,45 @@ section.section:has(.map-section-container)
         font-size: 0.9rem;
     }
 }
+
+.light-bg {
+    background-color: #002D04;
+}
+/* Index Page Specific Styles */
+.index-page .section-title {
+    color: #000000;
+}
+
+.index-page .section-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #002D04; /* Green line */
+    margin: 15px auto 0;
+}
+
+.index-page .section-subtitle {
+    color: #000000;
+}
+
+/* Contact Page Specific Styles */
+.contact-page .map-section-container .section-title {
+    color: #000000;
+}
+
+.contact-page .map-section-container .section-title::after{
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background-color: #002D04; /* Green line */
+    margin: 15px auto 0;
+}
+
+.contact-page .map-section-container .section-subtitle {
+    color: #000000;
+}
+
+
+
